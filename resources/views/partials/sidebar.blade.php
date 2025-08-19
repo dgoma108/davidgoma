@@ -54,7 +54,8 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#buttons">
+                    <a class="nav-link {{ request()->routeIs('docs.buttons') ? 'active' : '' }}"
+                        href="{{ route('docs.buttons') }}">
                         <span>Botones</span>
                     </a>
                 </li>
@@ -66,6 +67,23 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#forms">
                         <span>Formularios</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('docs.navbar') ? 'active' : '' }}"
+                        href="{{ route('docs.navbar') }}">
+                        <span>Navbar</span>
+                    </a>
+                </li>
+            </ul>
+
+            <!-- Forms -->
+            <div class="nav-section">Forms</div>
+            <ul class="nav flex-column">
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('docs.forms.overview') ? 'active' : '' }}"
+                        href="{{ route('docs.forms.overview') }}">
+                        <span>Overview</span>
                     </a>
                 </li>
             </ul>

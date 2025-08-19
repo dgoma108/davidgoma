@@ -5,7 +5,7 @@
 <!-- SEO Meta Tags -->
 <title>{{ $title ?? 'David Goma - Full Stack Developer'}}</title>
 <meta name="description"
-    content="{{ $description ?? 'Web personal de David Gomà. Programador PHP LAravel'}}" />
+    content="{{ $description ?? 'Web personal de David Gomà. Programador PHP Laravel'}}" />
 <meta name="keywords" content="{{ $keywords ?? 'developer, php, laravel, bootstrap'}}">
 <meta name="author" content="David Gomà" />
 <meta name="language" content="es">
@@ -21,14 +21,14 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://davidgoma.es">
 <meta property="og:title" content="David Gomà">
-<meta property="og:description" content="Web personal de David Gomà. Programador PHP LAravel.">
+<meta property="og:description" content="Web personal de David Gomà. Programador PHP Laravel.">
 <meta property="og:site_name" content="davidgoma.es">
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image">
 <meta property="twitter:url" content="https://davidgoma.es">
 <meta property="twitter:title" content="David Gomà">
-<meta property="twitter:description" content="Web personal de David Gomà. Programador PHP LAravel.">
+<meta property="twitter:description" content="Web personal de David Gomà. Programador PHP Laravel.">
 
 {{-- Etiquetas meta --}}
 {{ $meta ?? ''}}

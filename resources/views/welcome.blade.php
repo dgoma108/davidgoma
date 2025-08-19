@@ -108,8 +108,7 @@
     <section class="hero-modern">
         <div class="container">
             <h1 class="mb-4">Modern Bootstrap Extension</h1>
-            <p class="mb-2">Un sistema de diseño moderno y eficiente para crear interfaces web increíbles basado en bootstrap</p>
-            <p class="mb-5">-- Creado con ayuda de la IA --</p>
+            <p class="mb-5">Un sistema de diseño moderno y eficiente para crear interfaces web increíbles basado en Bootstrap</p>
             <a href="#demo" class="btn btn-primary btn-lg">Ver Demo</a>
             <a href="#" class="btn btn-outline btn-lg" >Documentación</a>
         </div>

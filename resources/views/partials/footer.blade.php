@@ -5,7 +5,7 @@
                 <div class="col-lg-5">
                     <h5 class="fw-bold mb-3">David Goma</h5>
                     <p class="text-light">
-                        Full Stack Developer especializado en Laravel y creador del Modern Bootstrap Extension.
+                        Full Stack Developer especializado en PHP y Laravel y creador del Modern Bootstrap Extension.
                     </p>
                     <div class="d-flex gap-3">
                         <!-- Social Links -->
@@ -17,8 +17,8 @@
                 <div class="col-lg-3">
                     <h6 class="fw-semibold mb-3">Proyectos</h6>
                     <ul class="list-unstyled">
-                        <li><a href="https://calcunom.es" class="text-white-50 text-decoration-none">Calcunom.es</a></li>
-                        <li><a href="https://losdelaroja.es" class="text-white-50 text-decoration-none">Los de la Roja</a></li>
+                        <li><a href="https://calcunom.es" target="_blank" class="text-white-50 text-decoration-none">Calcunom.es</a></li>
+                        <li><a href="https://losdelaroja.es" target="_blank" class="text-white-50 text-decoration-none">Los de la Roja</a></li>
                         <li><a href="{{ route('modern-bootstrap') }}" class="text-white-50 text-decoration-none">Modern Bootstrap Extension</a></li>
                     </ul>
                 </div>
@@ -33,9 +33,9 @@
                 <div class="col-lg-2">
                     <h6 class="fw-semibold mb-3">Legal</h6>
                     <ul class="list-unstyled">
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Política de Privacidad</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#cookiesModal">Política de Cookies</a></li>
-                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#legalModal">Aviso Legal</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal" class="text-white-50 text-decoration-none">Política de Privacidad</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#cookiesModal" class="text-white-50 text-decoration-none">Política de Cookies</a></li>
+                        <li><a href="#" data-bs-toggle="modal" data-bs-target="#legalModal" class="text-white-50 text-decoration-none">Aviso Legal</a></li>
                     </ul>
                 </div>
             </div>
