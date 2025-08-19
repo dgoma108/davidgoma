@@ -1,0 +1,336 @@
+// =========================================
+// ESTILOS BASE - DAVID GOMA
+// =========================================
+
+// RESET Y MEJORAS GENERALES
+// ==========================
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: $font-family-sans-serif;
+  font-weight: $font-weight-normal;
+  line-height: $line-height-base;
+  color: $gray-800;
+  background-color: $light;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+// TIPOGRAFÍA MEJORADA
+// ===================
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-family-display;
+  font-weight: $font-weight-bold;
+  line-height: 1.2;
+  color: $gray-900;
+  margin-bottom: 1rem;
+
+  &.display {
+    font-weight: $font-weight-extrabold;
+    line-height: 1.1;
+  }
+}
+
+h1, .h1 { font-size: $font-size-4xl; }
+h2, .h2 { font-size: $font-size-3xl; }
+h3, .h3 { font-size: $font-size-2xl; }
+h4, .h4 { font-size: $font-size-xl; }
+h5, .h5 { font-size: $font-size-lg; }
+h6, .h6 { font-size: $font-size-base; }
+
+// Displays para títulos hero
+.display-1 {
+  font-size: $font-size-6xl;
+  font-weight: $font-weight-extrabold;
+  line-height: 1.1;
+}
+
+.display-2 {
+  font-size: $font-size-5xl;
+  font-weight: $font-weight-extrabold;
+  line-height: 1.1;
+}
+
+// PÁRRAFOS Y TEXTO
+// ================
+p {
+  margin-bottom: 1.25rem;
+
+  &.lead {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-normal;
+    color: $gray-600;
+  }
+
+  &.small {
+    font-size: $font-size-sm;
+    color: $gray-500;
+  }
+}
+
+// ENLACES MODERNOS
+// ================
+a {
+  color: $primary;
+  text-decoration: none;
+  transition: $transition-fast;
+
+  &:hover {
+    color: darken($primary, 10%);
+    text-decoration: none;
+  }
+
+  &.link-underline {
+    text-decoration: underline;
+    text-decoration-color: rgba($primary, 0.3);
+    text-underline-offset: 3px;
+    text-decoration-thickness: 2px;
+
+    &:hover {
+      text-decoration-color: $primary;
+    }
+  }
+
+  &.link-arrow {
+    &::after {
+      content: ' →';
+      transition: $transition-fast;
+    }
+
+    &:hover::after {
+      transform: translateX(3px);
+    }
+  }
+}
+
+// IMÁGENES Y MEDIA
+// ================
+img {
+  max-width: 100%;
+  height: auto;
+  border-radius: $border-radius-sm;
+}
+
+.img-modern {
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-lg;
+  transition: $transition-all;
+
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: $box-shadow-2xl;
+  }
+}
+
+// CONTENEDORES PERSONALIZADOS
+// ===========================
+.container-narrow {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.container-wide {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+// SECCIONES
+// =========
+.section {
+  padding: 4rem 0;
+
+  &.section-sm {
+    padding: 2rem 0;
+  }
+
+  &.section-lg {
+    padding: 6rem 0;
+  }
+
+  &.section-xl {
+    padding: 8rem 0;
+  }
+}
+
+// HERO SECTIONS
+// =============
+.hero {
+  min-height: 100vh;
+  @include center-flex(column);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  &.hero-sm {
+    min-height: 60vh;
+  }
+
+  &.hero-md {
+    min-height: 80vh;
+  }
+
+  // Overlay para fondos
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+
+  &.hero-gradient {
+    @include gradient-primary();
+    color: white;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// SCROLL SUAVE Y INDICADORES
+// ==========================
+.scroll-indicator {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(to right, $primary 0%, $secondary 100%);
+  z-index: 9999;
+  transform-origin: left;
+  transition: transform 0.1s ease;
+}
+
+// SEPARADORES
+// ===========
+.divider {
+  width: 100%;
+  height: 1px;
+  background: $gray-200;
+  margin: 2rem 0;
+
+  &.divider-gradient {
+    background: linear-gradient(to right, transparent, $primary, transparent);
+  }
+
+  &.divider-thick {
+    height: 2px;
+  }
+}
+
+// UTILIDADES DE TEXTO
+// ===================
+.text-gradient {
+  background: linear-gradient(135deg, $primary, $secondary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-shadow {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.text-shadow-lg {
+  text-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+// ESTADOS DE LOADING
+// ==================
+.loading {
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.6),
+      transparent
+    );
+    animation: shimmer 1.5s infinite;
+  }
+}
+
+@keyframes shimmer {
+  to {
+    left: 100%;
+  }
+}
+
+// DARK MODE READY
+// ===============
+@media (prefers-color-scheme: dark) {
+  body {
+    color: $gray-200;
+    background-color: $gray-900;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: $gray-100;
+  }
+
+  .divider {
+    background: $gray-700;
+  }
+}
+
+// MEJORAS DE ACCESIBILIDAD
+// ========================
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+// Focus visible moderno
+.focus-visible {
+  @include focus-ring($primary);
+}
+
+// SCROLLBAR PERSONALIZADO
+// =======================
+body {
+  @include custom-scrollbar(8px, $gray-100, $gray-400);
+}
+
+// SELECCIÓN DE TEXTO
+// ==================
+::selection {
+  background: rgba($primary, 0.2);
+  color: $gray-900;
+}

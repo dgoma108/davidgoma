@@ -1,0 +1,518 @@
+// =========================================
+// NAVBAR MODERNO - DAVID GOMA
+// =========================================
+
+// MEJORAS BASE PARA NAVBAR DE BOOTSTRAP
+// =====================================
+.navbar {
+  padding: 1rem 0;
+  transition: $transition-all;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  .navbar-brand {
+    font-family: $font-family-display;
+    font-weight: $font-weight-extrabold;
+    font-size: $font-size-2xl;
+    color: $gray-900 !important;
+    text-decoration: none;
+    transition: $transition-fast;
+
+    &:hover {
+      transform: scale(1.05);
+      color: $primary !important;
+    }
+  }
+
+  .navbar-nav {
+    .nav-link {
+      font-family: $font-family-display;
+      font-weight: $font-weight-medium;
+      color: $gray-700 !important;
+      padding: 0.75rem 1rem !important;
+      border-radius: $border-radius;
+      transition: $transition-fast;
+      position: relative;
+
+      &:hover,
+      &:focus {
+        color: $primary !important;
+        background: rgba($primary, 0.1);
+      }
+
+      &.active {
+        color: $primary !important;
+        font-weight: $font-weight-semibold;
+      }
+    }
+  }
+
+  .navbar-toggler {
+    border: none;
+    padding: 0.5rem;
+    border-radius: $border-radius;
+
+    &:focus {
+      box-shadow: none;
+      @include focus-ring($primary, 2px);
+    }
+
+    .navbar-toggler-icon {
+      background-image: none;
+      width: 1.5rem;
+      height: 1.5rem;
+      position: relative;
+
+      &::before,
+      &::after,
+      & {
+        background: $gray-800;
+        height: 2px;
+        border-radius: 2px;
+        transition: $transition-all;
+      }
+
+      &::before,
+      &::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        left: 0;
+      }
+
+      &::before {
+        top: -6px;
+      }
+
+      &::after {
+        bottom: -6px;
+      }
+    }
+
+    &:not(.collapsed) .navbar-toggler-icon {
+      background: transparent;
+
+      &::before {
+        transform: rotate(45deg);
+        top: 0;
+      }
+
+      &::after {
+        transform: rotate(-45deg);
+        bottom: 0;
+      }
+    }
+
+  }
+}
+
+// VARIANTES DE NAVBAR
+// ===================
+
+// Navbar transparente con glass effect
+.navbar-glass {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+// Navbar con gradiente
+.navbar-gradient {
+  @include gradient-primary();
+
+  .navbar-brand {
+    color: white !important;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.8) !important;
+    }
+  }
+
+  .navbar-nav .nav-link {
+    color: rgba(255, 255, 255, 0.9) !important;
+
+    &:hover,
+    &:focus {
+      color: white !important;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    &.active {
+      color: white !important;
+      background: rgba(255, 255, 255, 0.2);
+    }
+  }
+
+  .navbar-toggler-icon {
+    &::before,
+    &::after,
+    & {
+      background: white;
+    }
+  }
+}
+
+// Navbar floating (separado del top)
+.navbar-floating {
+  position: fixed;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: calc(100% - 2rem);
+  max-width: 1200px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-radius: $border-radius-2xl;
+  box-shadow: $box-shadow-xl;
+  z-index: 1030;
+  padding: 0.75rem 2rem;
+
+  @include mobile-only {
+    width: calc(100% - 1rem);
+    padding: 0.75rem 1rem;
+    top: 0.5rem;
+  }
+}
+
+// Navbar con efecto de scroll
+.navbar-scrolled {
+  background: rgba(255, 255, 255, 0.95) !important;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: $box-shadow-lg;
+  padding: 0.5rem 0;
+
+  .navbar-brand {
+    font-size: $font-size-xl;
+  }
+
+  &.navbar-dark {
+    background: rgba(15, 23, 42, 0.95) !important;
+  }
+}
+
+// ESTILOS ESPECIALES
+// ==================
+
+// Navbar con logo centrado
+.navbar-center-logo {
+  .navbar-brand {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .navbar-nav {
+    &:first-child {
+      margin-right: auto;
+    }
+
+    &:last-child {
+      margin-left: auto;
+    }
+  }
+
+  @include mobile-only {
+    .navbar-brand {
+      position: static;
+      transform: none;
+    }
+  }
+}
+
+// Mega menu dropdown
+.navbar-nav {
+  .dropdown-mega {
+    position: static;
+
+    .dropdown-menu {
+      width: 100%;
+      left: 0;
+      right: 0;
+      border: none;
+      border-radius: $border-radius-xl;
+      box-shadow: $box-shadow-2xl;
+      padding: 2rem;
+      margin-top: 0.5rem;
+      background: white;
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+
+      .row {
+        .col {
+          padding: 0 1rem;
+
+          h6 {
+            font-weight: $font-weight-bold;
+            color: $gray-900;
+            margin-bottom: 1rem;
+            font-size: $font-size-sm;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+          }
+
+          .dropdown-item {
+            padding: 0.75rem 0;
+            border: none;
+            background: none;
+            color: $gray-600;
+            font-size: $font-size-sm;
+            transition: $transition-fast;
+            border-radius: $border-radius;
+
+            &:hover {
+              color: $primary;
+              background: rgba($primary, 0.05);
+              padding-left: 0.5rem;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+// Dropdown moderno mejorado
+.dropdown-menu {
+  border: none;
+  border-radius: $border-radius-lg;
+  box-shadow: $box-shadow-xl;
+  padding: 0.5rem;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+
+  .dropdown-item {
+    border-radius: $border-radius;
+    padding: 0.75rem 1rem;
+    font-weight: $font-weight-medium;
+    color: $gray-700;
+    transition: $transition-fast;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &:hover,
+    &:focus {
+      background: rgba($primary, 0.1);
+      color: $primary;
+      transform: translateX(2px);
+    }
+
+    &.active {
+      background: $primary;
+      color: white;
+    }
+
+    .dropdown-icon {
+      width: 1rem;
+      height: 1rem;
+      opacity: 0.7;
+    }
+  }
+
+  .dropdown-divider {
+    margin: 0.5rem 0;
+    border-top: 1px solid $gray-200;
+  }
+
+  .dropdown-header {
+    font-weight: $font-weight-bold;
+    color: $gray-900;
+    font-size: $font-size-xs;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 0.75rem 1rem 0.25rem;
+  }
+}
+
+// ELEMENTOS ADICIONALES
+// =====================
+
+// Botón CTA en navbar
+.navbar-cta {
+  margin-left: 1rem;
+
+  .btn {
+    padding: 0.5rem 1.25rem;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-semibold;
+  }
+
+  @include mobile-only {
+    margin-left: 0;
+    margin-top: 1rem;
+
+    .btn {
+      width: 100%;
+    }
+  }
+}
+
+// Search en navbar
+.navbar-search {
+  position: relative;
+
+  .search-input {
+    background: rgba($gray-100, 0.8);
+    border: none;
+    border-radius: $border-radius-pill;
+    padding: 0.5rem 2.5rem 0.5rem 1rem;
+    font-size: $font-size-sm;
+    transition: $transition-fast;
+    width: 200px;
+
+    &:focus {
+      outline: none;
+      background: white;
+      box-shadow: $box-shadow;
+      width: 300px;
+    }
+
+    &::placeholder {
+      color: $gray-500;
+    }
+  }
+
+  .search-icon {
+    position: absolute;
+    right: 0.75rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: $gray-500;
+    width: 1rem;
+    height: 1rem;
+  }
+
+  @include mobile-only {
+    width: 100%;
+    margin-top: 1rem;
+
+    .search-input {
+      width: 100%;
+
+      &:focus {
+        width: 100%;
+      }
+    }
+  }
+}
+
+// Indicador de página activa
+.navbar-nav {
+  .nav-link {
+    &.active {
+      position: relative;
+
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0.5rem;
+        height: 0.5rem;
+        background: $primary;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+// Animación de aparición para móvil
+.navbar-collapse {
+  &.show,
+  &.collapsing {
+    .navbar-nav {
+      .nav-item {
+        opacity: 0;
+        transform: translateY(-10px);
+        animation: navItemFadeIn 0.3s ease forwards;
+
+        &:nth-child(1) { animation-delay: 0.1s; }
+        &:nth-child(2) { animation-delay: 0.15s; }
+        &:nth-child(3) { animation-delay: 0.2s; }
+        &:nth-child(4) { animation-delay: 0.25s; }
+        &:nth-child(5) { animation-delay: 0.3s; }
+      }
+    }
+  }
+}
+
+@keyframes navItemFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// RESPONSIVE
+// ==========
+@include mobile-only {
+  .navbar {
+    .navbar-nav {
+      padding-top: 1rem;
+
+      .nav-link {
+        padding: 0.75rem 0 !important;
+        border-radius: 0;
+        border-bottom: 1px solid $gray-100;
+
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+    }
+  }
+
+  .navbar-floating {
+    border-radius: $border-radius-lg;
+  }
+}
+
+// DARK MODE
+// =========
+@media (prefers-color-scheme: dark) {
+  .navbar {
+    .navbar-brand {
+      color: $gray-100 !important;
+    }
+
+    .navbar-nav .nav-link {
+      color: $gray-300 !important;
+
+      &:hover,
+      &:focus {
+        color: $gray-100 !important;
+      }
+    }
+
+    .navbar-toggler-icon {
+      &::before,
+      &::after,
+      & {
+        background: $gray-100;
+      }
+    }
+  }
+
+  .navbar-glass {
+    background: rgba(15, 23, 42, 0.8) !important;
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+
+  .dropdown-menu {
+    background: rgba(15, 23, 42, 0.95);
+
+    .dropdown-item {
+      color: $gray-300;
+
+      &:hover {
+        color: $gray-100;
+      }
+    }
+  }
+}

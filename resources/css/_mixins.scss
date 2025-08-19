@@ -1,0 +1,260 @@
+// =========================================
+// MIXINS MODERNOS - DAVID GOMA
+// =========================================
+
+// GRADIENTES MODERNOS
+// ===================
+@mixin gradient-primary() {
+  background: linear-gradient(135deg, $gradient-primary-start 0%, $gradient-primary-end 100%);
+}
+
+@mixin gradient-secondary() {
+  background: linear-gradient(135deg, $gradient-secondary-start 0%, $gradient-secondary-end 100%);
+}
+
+@mixin gradient-success() {
+  background: linear-gradient(135deg, $gradient-success-start 0%, $gradient-success-end 100%);
+}
+
+@mixin gradient-custom($start, $end, $angle: 135deg) {
+  background: linear-gradient($angle, $start 0%, $end 100%);
+}
+
+// GLASSMORPHISM
+// =============
+@mixin glass($opacity: 0.1) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: $box-shadow-lg;
+}
+
+@mixin glass-dark($opacity: 0.05) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: $box-shadow-2xl;
+}
+
+// EFECTOS DE HOVER MODERNOS
+// =========================
+@mixin hover-lift($scale: 1.02, $shadow: $box-shadow-xl) {
+  transition: $transition-all;
+  cursor: pointer;
+
+  &:hover {
+    transform: translateY(-2px) scale($scale);
+    box-shadow: $shadow;
+  }
+}
+
+@mixin hover-glow($color: $primary, $size: 0px) {
+  transition: $transition-all;
+
+  &:hover {
+    box-shadow: 0 0 20px #{$size} rgba($color, 0.3);
+  }
+}
+
+@mixin hover-slide($direction: up, $distance: 5px) {
+  transition: $transition-all;
+
+  &:hover {
+    @if $direction == up {
+      transform: translateY(-#{$distance});
+    } @else if $direction == down {
+      transform: translateY(#{$distance});
+    } @else if $direction == left {
+      transform: translateX(-#{$distance});
+    } @else if $direction == right {
+      transform: translateX(#{$distance});
+    }
+  }
+}
+
+// ANIMACIONES CSS
+// ===============
+@mixin animate-fade-in($duration: 0.6s, $delay: 0s) {
+  animation: fadeIn $duration ease-out $delay both;
+}
+
+@mixin animate-slide-up($duration: 0.6s, $delay: 0s) {
+  animation: slideUp $duration ease-out $delay both;
+}
+
+@mixin animate-scale-in($duration: 0.4s, $delay: 0s) {
+  animation: scaleIn $duration ease-out $delay both;
+}
+
+// CENTRADO PERFECTO
+// =================
+@mixin center-absolute() {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin center-flex($direction: row) {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: $direction;
+}
+
+// TRUNCATE TEXT MODERNO
+// =====================
+@mixin truncate($lines: 1) {
+  @if $lines == 1 {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  } @else {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+}
+
+// RESPONSIVE MIXINS
+// =================
+@mixin mobile-only {
+  @media (max-width: 767.98px) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin desktop-up {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+// ASPECTOS RATIOS
+// ===============
+@mixin aspect-ratio($width: 16, $height: 9) {
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    display: block;
+    padding-top: calc(#{$height} / #{$width} * 100%);
+  }
+
+  > * {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+// SCROLLBARS PERSONALIZADOS
+// =========================
+@mixin custom-scrollbar($width: 8px, $track: $gray-100, $thumb: $gray-400) {
+  &::-webkit-scrollbar {
+    width: $width;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $track;
+    border-radius: #{$width / 2};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: #{$width / 2};
+
+    &:hover {
+      background: darken($thumb, 10%);
+    }
+  }
+}
+
+// NEUMORPHISM (por si acaso)
+// ==========================
+@mixin neumorphism($bg: $gray-100, $intensity: 0.15) {
+  background: $bg;
+  border-radius: $border-radius-lg;
+  box-shadow:
+    #{6px} #{6px} #{12px} rgba(darken($bg, 40%), $intensity),
+    #{-6px} #{-6px} #{12px} rgba(lighten($bg, 40%), $intensity);
+}
+
+@mixin neumorphism-inset($bg: $gray-100, $intensity: 0.15) {
+  background: $bg;
+  border-radius: $border-radius-lg;
+  box-shadow:
+    inset #{6px} #{6px} #{12px} rgba(darken($bg, 40%), $intensity),
+    inset #{-6px} #{-6px} #{12px} rgba(lighten($bg, 40%), $intensity);
+}
+
+// FOCUS STATES MODERNOS
+// =====================
+@mixin focus-ring($color: $primary, $width: 3px, $opacity: 0.3) {
+  outline: none;
+  box-shadow: 0 0 0 $width rgba($color, $opacity);
+  transition: box-shadow 0.15s ease-in-out;
+}
+
+// LOADING STATES
+// ==============
+@mixin skeleton($bg: $gray-200, $highlight: $gray-100) {
+  background: linear-gradient(90deg, $bg 25%, $highlight 50%, $bg 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s infinite;
+}
+
+// KEYFRAMES PARA ANIMACIONES
+// ==========================
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}

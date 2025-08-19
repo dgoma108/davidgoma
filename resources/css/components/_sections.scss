@@ -1,0 +1,1063 @@
+// =========================================
+// SECCIONES MODERNAS - DAVID GOMA
+// =========================================
+
+// HERO SECTIONS
+// =============
+.hero-modern {
+  min-height: 100vh;
+  @include center-flex(column);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+
+    .hero-title {
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: $font-weight-extrabold;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+
+      .text-gradient {
+        background: linear-gradient(135deg, $primary, $secondary);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+    }
+
+    .hero-subtitle {
+      font-size: $font-size-xl;
+      color: $gray-600;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      @include mobile-only {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+
+  // Background patterns
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: radial-gradient(circle at 20% 80%, rgba($primary, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba($secondary, 0.1) 0%, transparent 50%);
+    z-index: 1;
+  }
+
+  &.hero-gradient {
+    @include gradient-primary();
+    color: white;
+
+    .hero-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+// ABOUT/FEATURES SECTIONS
+// =======================
+.section-features {
+  padding: 5rem 0;
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .feature-item {
+    text-align: center;
+    padding: 2rem;
+    border-radius: $border-radius-xl;
+    transition: $transition-all;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow-lg;
+    }
+
+    .feature-icon {
+      width: 4rem;
+      height: 4rem;
+      border-radius: 50%;
+      @include center-flex();
+      margin: 0 auto 1.5rem;
+      font-size: 1.5rem;
+
+      &.icon-primary {
+        background: linear-gradient(135deg, $primary, lighten($primary, 10%));
+        color: white;
+      }
+
+      &.icon-success {
+        background: linear-gradient(135deg, $success, lighten($success, 10%));
+        color: white;
+      }
+
+      &.icon-warning {
+        background: linear-gradient(135deg, $warning, lighten($warning, 10%));
+        color: white;
+      }
+    }
+
+    .feature-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: 1rem;
+    }
+
+    .feature-description {
+      color: $gray-600;
+      line-height: 1.6;
+    }
+  }
+}
+
+// TESTIMONIALS SECTION
+// ====================
+.section-testimonials {
+  background: $gray-50;
+  padding: 5rem 0;
+
+  .testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .testimonial-card {
+    background: white;
+    padding: 2rem;
+    border-radius: $border-radius-2xl;
+    box-shadow: $box-shadow-md;
+    transition: $transition-all;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $box-shadow-xl;
+    }
+
+    .testimonial-stars {
+      display: flex;
+      gap: 0.25rem;
+      margin-bottom: 1rem;
+      color: $warning;
+    }
+
+    .testimonial-text {
+      font-size: $font-size-lg;
+      color: $gray-700;
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+      font-style: italic;
+
+      &::before,
+      &::after {
+        content: '"';
+        color: $primary;
+        font-size: 1.5em;
+      }
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+
+      .author-avatar {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .author-info {
+        .author-name {
+          font-weight: $font-weight-bold;
+          color: $gray-900;
+          margin-bottom: 0.25rem;
+        }
+
+        .author-role {
+          font-size: $font-size-sm;
+          color: $gray-500;
+        }
+      }
+    }
+  }
+}
+
+// CTA SECTIONS
+// ============
+.section-cta {
+  padding: 5rem 0;
+  text-align: center;
+
+  &.cta-gradient {
+    @include gradient-primary();
+    color: white;
+
+    .cta-subtitle {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
+  .cta-content {
+    max-width: 600px;
+    margin: 0 auto;
+
+    .cta-title {
+      font-size: $font-size-3xl;
+      font-weight: $font-weight-extrabold;
+      margin-bottom: 1rem;
+    }
+
+    .cta-subtitle {
+      font-size: $font-size-lg;
+      color: $gray-600;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      flex-wrap: wrap;
+
+      @include mobile-only {
+        flex-direction: column;
+        align-items: center;
+
+        .btn {
+          width: 100%;
+          max-width: 300px;
+        }
+      }
+    }
+  }
+}
+
+// STATS SECTION
+// =============
+.section-stats {
+  padding: 5rem 0;
+  background: $gray-900;
+  color: white;
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 3rem;
+  }
+
+  .stat-item {
+    text-align: center;
+
+    .stat-number {
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: $font-weight-extrabold;
+      color: $primary;
+      margin-bottom: 0.5rem;
+      font-family: $font-family-display;
+    }
+
+    .stat-label {
+      font-size: $font-size-lg;
+      color: rgba(255, 255, 255, 0.8);
+      font-weight: $font-weight-semibold;
+    }
+  }
+}
+
+// PRICING SECTION
+// ===============
+.section-pricing {
+  padding: 5rem 0;
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .pricing-card {
+    background: white;
+    border: 2px solid $gray-200;
+    border-radius: $border-radius-2xl;
+    padding: 2rem;
+    text-align: center;
+    transition: $transition-all;
+    position: relative;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow-xl;
+      border-color: $primary;
+    }
+
+    &.featured {
+      border-color: $primary;
+      transform: scale(1.05);
+      box-shadow: $box-shadow-lg;
+
+      &::before {
+        content: 'Popular';
+        position: absolute;
+        top: -0.75rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background: $primary;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: $border-radius-pill;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .pricing-header {
+      margin-bottom: 2rem;
+
+      .plan-name {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $gray-900;
+        margin-bottom: 0.5rem;
+      }
+
+      .plan-description {
+        color: $gray-600;
+        font-size: $font-size-sm;
+      }
+    }
+
+    .pricing-price {
+      margin-bottom: 2rem;
+
+      .price-amount {
+        font-size: 3rem;
+        font-weight: $font-weight-extrabold;
+        color: $primary;
+
+        .currency {
+          font-size: 1rem;
+          vertical-align: top;
+        }
+      }
+
+      .price-period {
+        color: $gray-500;
+        font-size: $font-size-sm;
+      }
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 2rem;
+
+      li {
+        padding: 0.5rem 0;
+        border-bottom: 1px solid $gray-100;
+
+        &:last-child {
+          border-bottom: none;
+        }
+
+        &::before {
+          content: '✓';
+          color: $success;
+          font-weight: bold;
+          margin-right: 0.5rem;
+        }
+
+        &.feature-disabled {
+          color: $gray-400;
+
+          &::before {
+            content: '✗';
+            color: $gray-400;
+          }
+        }
+      }
+    }
+
+    .pricing-button {
+      width: 100%;
+    }
+  }
+}
+
+// TEAM SECTION
+// ============
+.section-team {
+  padding: 5rem 0;
+  background: $gray-50;
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .team-member {
+    background: white;
+    border-radius: $border-radius-2xl;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-all;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow-lg;
+
+      .member-avatar {
+        transform: scale(1.05);
+      }
+
+      .member-social {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .member-avatar {
+      width: 5rem;
+      height: 5rem;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1rem;
+      border: 3px solid $primary;
+      transition: $transition-all;
+    }
+
+    .member-name {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: 0.5rem;
+    }
+
+    .member-role {
+      color: $primary;
+      font-weight: $font-weight-semibold;
+      margin-bottom: 1rem;
+    }
+
+    .member-bio {
+      color: $gray-600;
+      font-size: $font-size-sm;
+      line-height: 1.5;
+      margin-bottom: 1.5rem;
+    }
+
+    .member-social {
+      display: flex;
+      justify-content: center;
+      gap: 0.75rem;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: $transition-all;
+
+      .social-link {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 50%;
+        @include center-flex();
+        background: $gray-100;
+        color: $gray-600;
+        transition: $transition-all;
+
+        &:hover {
+          background: $primary;
+          color: white;
+          transform: translateY(-2px);
+        }
+      }
+    }
+  }
+}
+
+// CONTACT SECTION
+// ===============
+.section-contact {
+  padding: 5rem 0;
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: start;
+
+    @include mobile-only {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .contact-info {
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+
+      .contact-icon {
+        width: 3rem;
+        height: 3rem;
+        border-radius: 50%;
+        @include center-flex();
+        background: rgba($primary, 0.1);
+        color: $primary;
+        font-size: 1.25rem;
+      }
+
+      .contact-details {
+        .contact-label {
+          font-weight: $font-weight-bold;
+          color: $gray-900;
+          margin-bottom: 0.25rem;
+        }
+
+        .contact-value {
+          color: $gray-600;
+        }
+      }
+    }
+  }
+
+  .contact-form {
+    background: white;
+    padding: 2rem;
+    border-radius: $border-radius-2xl;
+    box-shadow: $box-shadow-lg;
+
+    .form-title {
+      font-size: $font-size-2xl;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: 1.5rem;
+      text-align: center;
+    }
+  }
+}
+
+// FAQ SECTION
+// ===========
+.section-faq {
+  padding: 5rem 0;
+  background: $gray-50;
+
+  .faq-container {
+    max-width: 800px;
+    margin: 3rem auto 0;
+  }
+
+  .faq-item {
+    background: white;
+    border-radius: $border-radius-lg;
+    margin-bottom: 1rem;
+    box-shadow: $box-shadow-sm;
+    overflow: hidden;
+
+    .faq-question {
+      width: 100%;
+      padding: 1.5rem;
+      background: none;
+      border: none;
+      text-align: left;
+      font-size: $font-size-lg;
+      font-weight: $font-weight-semibold;
+      color: $gray-900;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: $transition-fast;
+
+      &:hover {
+        background: $gray-50;
+      }
+
+      .faq-icon {
+        width: 1.5rem;
+        height: 1.5rem;
+        transition: $transition-fast;
+
+        &.rotated {
+          transform: rotate(180deg);
+        }
+      }
+    }
+
+    .faq-answer {
+      padding: 0 1.5rem 1.5rem;
+      color: $gray-600;
+      line-height: 1.6;
+      display: none;
+
+      &.show {
+        display: block;
+        animation: fadeInDown 0.3s ease-out;
+      }
+    }
+  }
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// PORTFOLIO/GALLERY SECTION
+// =========================
+.section-portfolio {
+  padding: 5rem 0;
+
+  .portfolio-filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+
+    .filter-btn {
+      padding: 0.5rem 1.5rem;
+      background: transparent;
+      border: 2px solid $gray-300;
+      border-radius: $border-radius-pill;
+      color: $gray-600;
+      font-weight: $font-weight-semibold;
+      cursor: pointer;
+      transition: $transition-all;
+
+      &:hover,
+      &.active {
+        background: $primary;
+        border-color: $primary;
+        color: white;
+      }
+    }
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .portfolio-item {
+    position: relative;
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    aspect-ratio: 4/3;
+    box-shadow: $box-shadow-md;
+    transition: $transition-all;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: $box-shadow-xl;
+
+      .portfolio-overlay {
+        opacity: 1;
+      }
+
+      .portfolio-image {
+        transform: scale(1.1);
+      }
+    }
+
+    .portfolio-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: $transition-all;
+    }
+
+    .portfolio-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.8);
+      @include center-flex(column);
+      color: white;
+      opacity: 0;
+      transition: $transition-all;
+      padding: 2rem;
+      text-align: center;
+
+      .portfolio-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        margin-bottom: 0.5rem;
+      }
+
+      .portfolio-category {
+        color: $primary;
+        font-size: $font-size-sm;
+        font-weight: $font-weight-semibold;
+        margin-bottom: 1rem;
+      }
+
+      .portfolio-description {
+        font-size: $font-size-sm;
+        opacity: 0.9;
+        margin-bottom: 1.5rem;
+      }
+
+      .portfolio-buttons {
+        display: flex;
+        gap: 0.5rem;
+        justify-content: center;
+
+        .btn {
+          padding: 0.5rem 1rem;
+          font-size: $font-size-xs;
+        }
+      }
+    }
+  }
+}
+
+// BLOG SECTION
+// ============
+.section-blog {
+  padding: 5rem 0;
+  background: $gray-50;
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .blog-post {
+    background: white;
+    border-radius: $border-radius-xl;
+    overflow: hidden;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-all;
+
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: $box-shadow-lg;
+
+      .post-image img {
+        transform: scale(1.05);
+      }
+    }
+
+    .post-image {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 16/9;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: $transition-all;
+      }
+
+      .post-category {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        background: $primary;
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: $border-radius-pill;
+        font-size: $font-size-xs;
+        font-weight: $font-weight-bold;
+      }
+    }
+
+    .post-content {
+      padding: 1.5rem;
+
+      .post-meta {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        font-size: $font-size-xs;
+        color: $gray-500;
+
+        .meta-item {
+          display: flex;
+          align-items: center;
+          gap: 0.25rem;
+        }
+      }
+
+      .post-title {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $gray-900;
+        margin-bottom: 0.75rem;
+        line-height: 1.3;
+
+        a {
+          color: inherit;
+          text-decoration: none;
+
+          &:hover {
+            color: $primary;
+          }
+        }
+      }
+
+      .post-excerpt {
+        color: $gray-600;
+        line-height: 1.6;
+        margin-bottom: 1rem;
+      }
+
+      .post-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 1rem;
+        border-top: 1px solid $gray-100;
+
+        .post-author {
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          .author-avatar {
+            width: 2rem;
+            height: 2rem;
+            border-radius: 50%;
+            object-fit: cover;
+          }
+
+          .author-name {
+            font-size: $font-size-sm;
+            font-weight: $font-weight-semibold;
+            color: $gray-700;
+          }
+        }
+
+        .read-more {
+          color: $primary;
+          font-weight: $font-weight-semibold;
+          font-size: $font-size-sm;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+          }
+        }
+      }
+    }
+  }
+}
+
+// SECTION HEADERS UNIVERSALES
+// ===========================
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+
+  .section-subtitle {
+    color: $primary;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: $font-weight-extrabold;
+    color: $gray-900;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+
+  .section-description {
+    font-size: $font-size-lg;
+    color: $gray-600;
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+}
+
+// ANIMACIONES PARA SECCIONES
+// ==========================
+.section-animate {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+
+  &.animate-in {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  // Delays para elementos hijos
+  .animate-delay-1 { transition-delay: 0.1s; }
+  .animate-delay-2 { transition-delay: 0.2s; }
+  .animate-delay-3 { transition-delay: 0.3s; }
+  .animate-delay-4 { transition-delay: 0.4s; }
+  .animate-delay-5 { transition-delay: 0.5s; }
+}
+
+// RESPONSIVE ADJUSTMENTS
+// ======================
+@include mobile-only {
+  .hero-modern {
+    min-height: 80vh;
+    padding: 2rem 0;
+
+    .hero-content {
+      .hero-title {
+        font-size: 2.5rem;
+      }
+
+      .hero-subtitle {
+        font-size: $font-size-lg;
+      }
+    }
+  }
+
+  .section-features,
+  .section-testimonials,
+  .section-pricing,
+  .section-team {
+    padding: 3rem 0;
+
+    .features-grid,
+    .testimonials-grid,
+    .pricing-grid,
+    .team-grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .section-stats {
+    padding: 3rem 0;
+
+    .stats-grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+
+  .section-portfolio {
+    .portfolio-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-filters {
+      .filter-btn {
+        font-size: $font-size-sm;
+        padding: 0.5rem 1rem;
+      }
+    }
+  }
+}
+
+// DARK MODE PARA SECCIONES
+// ========================
+@media (prefers-color-scheme: dark) {
+  .section-header {
+    .section-title {
+      color: $gray-100;
+    }
+
+    .section-description {
+      color: $gray-400;
+    }
+  }
+
+  .section-features {
+    .feature-item {
+      &:hover {
+        background: $gray-800;
+      }
+
+      .feature-title {
+        color: $gray-100;
+      }
+
+      .feature-description {
+        color: $gray-400;
+      }
+    }
+  }
+
+  .testimonial-card,
+  .pricing-card,
+  .team-member,
+  .blog-post {
+    background: $gray-800 !important;
+
+    .testimonial-text,
+    .plan-name,
+    .member-name,
+    .post-title {
+      color: $gray-100;
+    }
+
+    .testimonial-author .author-name,
+    .pricing-features li,
+    .member-bio,
+    .post-excerpt {
+      color: $gray-300;
+    }
+  }
+
+  .section-stats {
+    background: $gray-800;
+  }
+}

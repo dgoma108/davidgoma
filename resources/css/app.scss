@@ -1,0 +1,26 @@
+// =========================================
+// DAVID GOMA - SISTEMA DE DISEÑO MODERNO
+// =========================================
+
+// 1. Variables personalizadas primero
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+// 5. Nuestros mixins personalizados
+@import 'mixins';
+
+// 6. Estilos base
+@import 'layouts/base';
+@import 'layouts/utilities';
+
+// 7. Componentes personalizados
+@import 'components/buttons';
+@import 'components/cards';
+@import 'components/forms';
+@import 'components/navbar';
+@import 'components/sections';
+@import 'components/tables';
+@import 'components/typography';
+

@@ -1,0 +1,394 @@
+// =========================================
+// UTILIDADES MODERNAS - DAVID GOMA
+// =========================================
+
+// GRADIENTES COMO UTILIDADES
+// ===========================
+.bg-gradient-primary {
+  @include gradient-primary();
+  color: white;
+}
+
+.bg-gradient-secondary {
+  @include gradient-secondary();
+  color: white;
+}
+
+.bg-gradient-success {
+  @include gradient-success();
+  color: white;
+}
+
+// GLASSMORPHISM
+// =============
+.glass {
+  @include glass();
+}
+
+.glass-dark {
+  @include glass-dark();
+}
+
+.glass-card {
+  @include glass();
+  border-radius: $border-radius-xl;
+  padding: 2rem;
+}
+
+// EFECTOS DE HOVER
+// ================
+.hover-lift {
+  @include hover-lift();
+}
+
+.hover-lift-sm {
+  @include hover-lift(1.01, $box-shadow-lg);
+}
+
+.hover-lift-lg {
+  @include hover-lift(1.03, $box-shadow-2xl);
+}
+
+.hover-glow {
+  @include hover-glow();
+}
+
+.hover-glow-success {
+  @include hover-glow($success);
+}
+
+.hover-glow-warning {
+  @include hover-glow($warning);
+}
+
+.hover-slide-up {
+  @include hover-slide(up);
+}
+
+.hover-slide-down {
+  @include hover-slide(down);
+}
+
+// SOMBRAS MODERNAS
+// ================
+.shadow-colored {
+  box-shadow: $box-shadow-colored;
+}
+
+.shadow-glow {
+  box-shadow: 0 0 20px rgba($primary, 0.15);
+}
+
+.shadow-none { box-shadow: none !important; }
+.shadow-xs { box-shadow: $box-shadow-sm !important; }
+.shadow-sm { box-shadow: $box-shadow !important; }
+.shadow-md { box-shadow: $box-shadow-md !important; }
+.shadow-lg { box-shadow: $box-shadow-lg !important; }
+.shadow-xl { box-shadow: $box-shadow-xl !important; }
+.shadow-2xl { box-shadow: $box-shadow-2xl !important; }
+.shadow-inner { box-shadow: $box-shadow-inner !important; }
+
+// BORDES MODERNOS
+// ===============
+.border-radius-none { border-radius: 0 !important; }
+.border-radius-sm { border-radius: $border-radius-sm !important; }
+.border-radius { border-radius: $border-radius !important; }
+.border-radius-lg { border-radius: $border-radius-lg !important; }
+.border-radius-xl { border-radius: $border-radius-xl !important; }
+.border-radius-2xl { border-radius: $border-radius-2xl !important; }
+.border-radius-pill { border-radius: $border-radius-pill !important; }
+.border-radius-circle { border-radius: 50% !important; }
+
+// ANIMACIONES
+// ===========
+.animate-fade-in {
+  @include animate-fade-in();
+}
+
+.animate-fade-in-delay {
+  @include animate-fade-in(0.6s, 0.2s);
+}
+
+.animate-slide-up {
+  @include animate-slide-up();
+}
+
+.animate-slide-up-delay {
+  @include animate-slide-up(0.6s, 0.3s);
+}
+
+.animate-scale-in {
+  @include animate-scale-in();
+}
+
+// TRANSICIONES
+// ============
+.transition-all { transition: $transition-all !important; }
+.transition-fast { transition: $transition-fast !important; }
+.transition-slow { transition: $transition-slow !important; }
+.transition-none { transition: none !important; }
+
+// CENTRADO
+// ========
+.center-absolute {
+  @include center-absolute();
+}
+
+.center-flex {
+  @include center-flex();
+}
+
+.center-flex-column {
+  @include center-flex(column);
+}
+
+// ASPECT RATIOS
+// =============
+.aspect-square {
+  @include aspect-ratio(1, 1);
+}
+
+.aspect-video {
+  @include aspect-ratio(16, 9);
+}
+
+.aspect-photo {
+  @include aspect-ratio(4, 3);
+}
+
+.aspect-portrait {
+  @include aspect-ratio(3, 4);
+}
+
+// TRUNCATE TEXT
+// =============
+.truncate {
+  @include truncate(1);
+}
+
+.truncate-2 {
+  @include truncate(2);
+}
+
+.truncate-3 {
+  @include truncate(3);
+}
+
+// OVERLAYS
+// ========
+.overlay {
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+  }
+
+  > * {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+.overlay-light::before {
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.overlay-dark::before {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+.overlay-primary::before {
+  background: rgba($primary, 0.8);
+}
+
+.overlay-gradient::before {
+  background: linear-gradient(135deg, rgba($primary, 0.8), rgba($secondary, 0.8));
+}
+
+// BACKDROP FILTERS
+// ================
+.backdrop-blur {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.backdrop-blur-sm {
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.backdrop-blur-lg {
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+// POSICIONAMIENTO
+// ===============
+.sticky-top-modern {
+  position: sticky;
+  top: 0;
+  z-index: 1020;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.8);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+// SPACING EXTENDIDO
+// =================
+.p-8 { padding: 2rem !important; }
+.p-10 { padding: 2.5rem !important; }
+.p-12 { padding: 3rem !important; }
+.p-16 { padding: 4rem !important; }
+.p-20 { padding: 5rem !important; }
+.p-24 { padding: 6rem !important; }
+
+.m-8 { margin: 2rem !important; }
+.m-10 { margin: 2.5rem !important; }
+.m-12 { margin: 3rem !important; }
+.m-16 { margin: 4rem !important; }
+.m-20 { margin: 5rem !important; }
+.m-24 { margin: 6rem !important; }
+
+// Padding y margin en ejes específicos
+.px-8 { padding-left: 2rem !important; padding-right: 2rem !important; }
+.py-8 { padding-top: 2rem !important; padding-bottom: 2rem !important; }
+.mx-8 { margin-left: 2rem !important; margin-right: 2rem !important; }
+.my-8 { margin-top: 2rem !important; margin-bottom: 2rem !important; }
+
+.px-12 { padding-left: 3rem !important; padding-right: 3rem !important; }
+.py-12 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+.mx-12 { margin-left: 3rem !important; margin-right: 3rem !important; }
+.my-12 { margin-top: 3rem !important; margin-bottom: 3rem !important; }
+
+// WIDTH Y HEIGHT MODERNOS
+// =======================
+.w-fit { width: fit-content !important; }
+.h-fit { height: fit-content !important; }
+.min-h-screen { min-height: 100vh !important; }
+.min-h-50 { min-height: 50vh !important; }
+.min-h-75 { min-height: 75vh !important; }
+
+// Z-INDEX
+// =======
+.z-0 { z-index: 0 !important; }
+.z-10 { z-index: 10 !important; }
+.z-20 { z-index: 20 !important; }
+.z-30 { z-index: 30 !important; }
+.z-40 { z-index: 40 !important; }
+.z-50 { z-index: 50 !important; }
+
+// CURSOR
+// ======
+.cursor-pointer { cursor: pointer !important; }
+.cursor-not-allowed { cursor: not-allowed !important; }
+.cursor-grab { cursor: grab !important; }
+.cursor-grabbing { cursor: grabbing !important; }
+
+// SKELETON LOADING
+// ================
+.skeleton {
+  @include skeleton();
+  border-radius: $border-radius;
+
+  &.skeleton-text {
+    height: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &.skeleton-title {
+    height: 2rem;
+    width: 60%;
+    margin-bottom: 1rem;
+  }
+
+  &.skeleton-avatar {
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+  }
+
+  &.skeleton-button {
+    height: 2.5rem;
+    width: 6rem;
+  }
+}
+
+// STATES
+// ======
+.disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.loading-state {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 1rem;
+    height: 1rem;
+    border: 2px solid $gray-300;
+    border-top-color: $primary;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+}
+
+@keyframes spin {
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
+
+// SCROLL BEHAVIOR
+// ===============
+.scroll-smooth {
+  scroll-behavior: smooth;
+}
+
+.scroll-snap-x {
+  scroll-snap-type: x mandatory;
+  overflow-x: auto;
+}
+
+.scroll-snap-y {
+  scroll-snap-type: y mandatory;
+  overflow-y: auto;
+}
+
+.scroll-snap-start {
+  scroll-snap-align: start;
+}
+
+.scroll-snap-center {
+  scroll-snap-align: center;
+}
+
+// RESPONSIVE HELPERS
+// ==================
+@include mobile-only {
+  .hide-mobile { display: none !important; }
+}
+
+@include tablet-up {
+  .show-tablet { display: block !important; }
+  .hide-tablet { display: none !important; }
+}
+
+@include desktop-up {
+  .show-desktop { display: block !important; }
+  .hide-desktop { display: none !important; }
+}

@@ -1,0 +1,718 @@
+// =========================================
+// CARDS MODERNAS - DAVID GOMA
+// =========================================
+
+// MEJORAS BASE PARA CARDS DE BOOTSTRAP
+// ====================================
+.card {
+  border: none;
+  border-radius: $border-radius-xl;
+  box-shadow: $box-shadow-md;
+  transition: $transition-all;
+  overflow: hidden;
+  background: white;
+
+  // Efecto hover por defecto
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $box-shadow-xl;
+  }
+
+  // Header mejorado
+  .card-header {
+    background: transparent;
+    border-bottom: 1px solid $gray-100;
+    padding: 1.5rem;
+    font-weight: $font-weight-semibold;
+    color: $gray-900;
+  }
+
+  // Body con mejor padding
+  .card-body {
+    padding: 1.5rem;
+
+    .card-title {
+      font-family: $font-family-display;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: 0.75rem;
+    }
+
+    .card-text {
+      color: $gray-600;
+      line-height: 1.6;
+    }
+  }
+
+  // Footer mejorado
+  .card-footer {
+    background: $gray-50;
+    border-top: 1px solid $gray-100;
+    padding: 1rem 1.5rem;
+  }
+
+  // Imágenes responsivas
+  .card-img-top {
+    border-radius: 0;
+    transition: $transition-all;
+  }
+
+  &:hover .card-img-top {
+    transform: scale(1.02);
+  }
+}
+
+// VARIANTES MODERNAS DE CARDS
+// ===========================
+
+// Card con glassmorphism
+.card-glass {
+  @include glass();
+  border: 1px solid rgba(255, 255, 255, 0.2);
+
+  .card-body {
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  &.card-glass-dark {
+    @include glass-dark();
+    color: white;
+
+    .card-title {
+      color: white;
+    }
+
+    .card-text {
+      color: rgba(255, 255, 255, 0.8);
+    }
+  }
+}
+
+// Card con gradiente
+.card-gradient {
+  @include gradient-primary();
+  color: white;
+
+  .card-title {
+    color: white;
+  }
+
+  .card-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+
+  .card-header {
+    border-bottom-color: rgba(255, 255, 255, 0.2);
+  }
+
+  &.card-gradient-secondary {
+    @include gradient-secondary();
+  }
+
+  &.card-gradient-success {
+    @include gradient-success();
+  }
+}
+
+// Card con efecto neón/glow
+.card-glow {
+  box-shadow: 0 0 20px rgba($primary, 0.1);
+
+  &:hover {
+    box-shadow: 0 0 30px rgba($primary, 0.2);
+    transform: translateY(-6px);
+  }
+
+  &.card-glow-success {
+    box-shadow: 0 0 20px rgba($success, 0.1);
+
+    &:hover {
+      box-shadow: 0 0 30px rgba($success, 0.2);
+    }
+  }
+}
+
+// Card flotante (sin hover lift)
+.card-flat {
+  &:hover {
+    transform: none;
+    box-shadow: $box-shadow-md;
+  }
+}
+
+// Card con borde coloreado
+.card-bordered {
+  border: 2px solid $primary;
+
+  &.card-bordered-success {
+    border-color: $success;
+  }
+
+  &.card-bordered-warning {
+    border-color: $warning;
+  }
+
+  &.card-bordered-danger {
+    border-color: $danger;
+  }
+}
+
+// CARDS ESPECIALES
+// ================
+
+// Card de testimonio
+.card-testimonial {
+  text-align: center;
+  padding: 2rem;
+
+  .testimonial-quote {
+    font-size: $font-size-lg;
+    font-style: italic;
+    color: $gray-700;
+    margin-bottom: 1.5rem;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '"';
+      font-size: 3rem;
+      color: $primary;
+      position: absolute;
+      top: -1rem;
+    }
+
+    &::before {
+      left: -1rem;
+    }
+
+    &::after {
+      right: -1rem;
+    }
+  }
+
+  .testimonial-author {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+
+    .author-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info {
+      text-align: left;
+
+      .author-name {
+        font-weight: $font-weight-bold;
+        color: $gray-900;
+        margin-bottom: 0.25rem;
+      }
+
+      .author-role {
+        font-size: $font-size-sm;
+        color: $gray-500;
+      }
+    }
+  }
+}
+
+// Card de producto/servicio
+.card-product {
+  position: relative;
+  overflow: hidden;
+
+  .product-badge {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: $primary;
+    color: white;
+    padding: 0.25rem 0.75rem;
+    border-radius: $border-radius-pill;
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+    z-index: 2;
+
+    &.badge-sale {
+      background: $danger;
+    }
+
+    &.badge-new {
+      background: $success;
+    }
+  }
+
+  .product-image {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: $transition-all;
+    }
+
+    .product-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      @include center-flex();
+      opacity: 0;
+      transition: $transition-all;
+
+      .btn {
+        transform: translateY(1rem);
+        transition: $transition-all;
+      }
+    }
+  }
+
+  &:hover {
+    .product-image {
+      img {
+        transform: scale(1.1);
+      }
+
+      .product-overlay {
+        opacity: 1;
+
+        .btn {
+          transform: translateY(0);
+        }
+      }
+    }
+  }
+
+  .product-info {
+    padding: 1.5rem;
+
+    .product-title {
+      font-weight: $font-weight-bold;
+      margin-bottom: 0.5rem;
+    }
+
+    .product-price {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+
+      .current-price {
+        font-size: $font-size-xl;
+        font-weight: $font-weight-bold;
+        color: $primary;
+      }
+
+      .old-price {
+        font-size: $font-size-sm;
+        color: $gray-500;
+        text-decoration: line-through;
+      }
+    }
+  }
+}
+
+// Card de estadísticas
+.card-stats {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+
+  .stats-icon {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 50%;
+    @include center-flex();
+    margin: 0 auto 1rem;
+    font-size: 1.5rem;
+
+    &.stats-icon-primary {
+      background: rgba($primary, 0.1);
+      color: $primary;
+    }
+
+    &.stats-icon-success {
+      background: rgba($success, 0.1);
+      color: $success;
+    }
+
+    &.stats-icon-warning {
+      background: rgba($warning, 0.1);
+      color: $warning;
+    }
+  }
+
+  .stats-number {
+    font-size: $font-size-3xl;
+    font-weight: $font-weight-extrabold;
+    color: $gray-900;
+    margin-bottom: 0.5rem;
+    font-family: $font-family-display;
+  }
+
+  .stats-label {
+    font-size: $font-size-sm;
+    color: $gray-600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+  }
+
+  .stats-change {
+    font-size: $font-size-xs;
+    font-weight: $font-weight-semibold;
+
+    &.positive {
+      color: $success;
+
+      &::before {
+        content: '↗ ';
+      }
+    }
+
+    &.negative {
+      color: $danger;
+
+      &::before {
+        content: '↘ ';
+      }
+    }
+  }
+}
+
+// Card de perfil/team member
+.card-profile {
+  text-align: center;
+  padding: 2rem;
+
+  .profile-avatar {
+    width: 5rem;
+    height: 5rem;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 1rem;
+    border: 3px solid $primary;
+    transition: $transition-all;
+  }
+
+  .profile-name {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $gray-900;
+    margin-bottom: 0.25rem;
+  }
+
+  .profile-role {
+    color: $primary;
+    font-weight: $font-weight-semibold;
+    margin-bottom: 1rem;
+    font-size: $font-size-sm;
+  }
+
+  .profile-bio {
+    color: $gray-600;
+    font-size: $font-size-sm;
+    margin-bottom: 1.5rem;
+    line-height: 1.5;
+  }
+
+  .profile-social {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+
+    .social-link {
+      width: 2.5rem;
+      height: 2.5rem;
+      border-radius: 50%;
+      @include center-flex();
+      background: $gray-100;
+      color: $gray-600;
+      transition: $transition-all;
+
+      &:hover {
+        background: $primary;
+        color: white;
+        transform: translateY(-2px);
+      }
+    }
+  }
+
+  &:hover .profile-avatar {
+    transform: scale(1.05);
+    box-shadow: 0 0 0 4px rgba($primary, 0.2);
+  }
+}
+
+// Card de blog/artículo
+.card-blog {
+  .blog-image {
+    position: relative;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      transition: $transition-all;
+    }
+
+    .blog-category {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      background: $primary;
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: $border-radius-pill;
+      font-size: $font-size-xs;
+      font-weight: $font-weight-semibold;
+    }
+  }
+
+  .blog-content {
+    padding: 1.5rem;
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      font-size: $font-size-xs;
+      color: $gray-500;
+
+      .meta-item {
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+    }
+
+    .blog-title {
+      font-size: $font-size-xl;
+      font-weight: $font-weight-bold;
+      color: $gray-900;
+      margin-bottom: 0.75rem;
+      line-height: 1.3;
+
+      a {
+        color: inherit;
+        text-decoration: none;
+
+        &:hover {
+          color: $primary;
+        }
+      }
+    }
+
+    .blog-excerpt {
+      color: $gray-600;
+      margin-bottom: 1rem;
+      line-height: 1.6;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .author-info {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+
+        .author-avatar {
+          width: 2rem;
+          height: 2rem;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+
+        .author-name {
+          font-size: $font-size-sm;
+          font-weight: $font-weight-semibold;
+          color: $gray-700;
+        }
+      }
+
+      .read-more {
+        color: $primary;
+        font-weight: $font-weight-semibold;
+        font-size: $font-size-sm;
+        text-decoration: none;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+
+  &:hover .blog-image img {
+    transform: scale(1.05);
+  }
+}
+
+// TAMAÑOS DE CARDS
+// ================
+.card-sm {
+  .card-body {
+    padding: 1rem;
+  }
+}
+
+.card-lg {
+  .card-body {
+    padding: 2rem;
+  }
+}
+
+.card-xl {
+  .card-body {
+    padding: 2.5rem;
+  }
+}
+
+// LAYOUTS DE CARDS
+// ================
+
+// Card horizontal
+.card-horizontal {
+  flex-direction: row;
+
+  .card-img-left {
+    width: 200px;
+    height: 100%;
+    object-fit: cover;
+    border-radius: $border-radius-xl 0 0 $border-radius-xl;
+  }
+
+  .card-body {
+    flex: 1;
+  }
+
+  @include mobile-only {
+    flex-direction: column;
+
+    .card-img-left {
+      width: 100%;
+      height: 200px;
+      border-radius: $border-radius-xl $border-radius-xl 0 0;
+    }
+  }
+}
+
+// Card con overlay
+.card-overlay {
+  position: relative;
+  color: white;
+
+  .card-img-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1.5rem;
+    background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8));
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    border-radius: $border-radius-xl;
+  }
+
+  .card-title {
+    color: white;
+    margin-bottom: 0.5rem;
+  }
+
+  .card-text {
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+// GRID DE CARDS MASONRY
+// =====================
+.cards-masonry {
+  columns: 1;
+  column-gap: 1.5rem;
+
+  .card {
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+  }
+
+  @include tablet-up {
+    columns: 2;
+  }
+
+  @include desktop-up {
+    columns: 3;
+  }
+}
+
+// ANIMACIONES PARA CARDS
+// ======================
+.card-animate-in {
+  @include animate-fade-in();
+
+  &.delay-1 { animation-delay: 0.1s; }
+  &.delay-2 { animation-delay: 0.2s; }
+  &.delay-3 { animation-delay: 0.3s; }
+  &.delay-4 { animation-delay: 0.4s; }
+  &.delay-5 { animation-delay: 0.5s; }
+}
+
+// ESTADOS ESPECIALES
+// ==================
+.card-loading {
+  .card-body {
+    @include skeleton();
+    min-height: 200px;
+  }
+}
+
+.card-disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+
+  &:hover {
+    transform: none;
+    box-shadow: $box-shadow-md;
+  }
+}
+
+// DARK MODE
+// =========
+@media (prefers-color-scheme: dark) {
+  .card {
+    background: $gray-800;
+    color: $gray-100;
+
+    .card-title {
+      color: $gray-100;
+    }
+
+    .card-text {
+      color: $gray-300;
+    }
+
+    .card-header {
+      border-bottom-color: $gray-700;
+    }
+
+    .card-footer {
+      background: $gray-700;
+      border-top-color: $gray-600;
+    }
+  }
+}

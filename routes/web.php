@@ -1,0 +1,32 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+/* Route::get('/', function () {
+    return view('welcome');
+}); */
+
+
+
+// routes/web.php
+// Route::get('/', HomeController::class)->name('home');
+// Route::get('/portfolio', [PortfolioController::class, 'index'])->name('portfolio.index');
+// Route::get('/modern-bootstrap', ModernBootstrapController::class)->name('modern-bootstrap');
+// Route::get('/contact', ContactController::class)->name('contact');
+Route::get('/', fn() => view('welcome'))->name('home');
+Route::get('/portfolio', fn() => view('portfolio'))->name('portfolio.index');
+Route::get('/modern-bootstrap', fn() => view('modern-bootstrap'))->name('modern-bootstrap');
+Route::get('/contact', fn() => view('contact'))->name('contact');
+
+// Docs routes
+Route::prefix('docs')->name('docs.')->group(function () {
+    // Route::get('/', [DocsController::class, 'index'])->name('index');
+    Route::get('/', fn() => view('docs'))->name('index');
+    Route::get('/typography', fn() => view('docs/typography'))->name('typography');
+    Route::get('/components', fn() => view('docs/components'))->name('components');
+    Route::get('/utilities', fn() => view('docs/utilities'))->name('utilities');
+    Route::get('/examples', fn() => view('docs/examples'))->name('examples');
+    // Route::get('/components', [DocsController::class, 'components'])->name('components');
+    // Route::get('/utilities', [DocsController::class, 'utilities'])->name('utilities');
+    // Route::get('/examples', [DocsController::class, 'examples'])->name('examples');
+});

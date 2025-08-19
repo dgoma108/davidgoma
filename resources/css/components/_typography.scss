@@ -1,0 +1,124 @@
+// =================================================================
+// MODERN BOOTSTRAP EXTENSION - TYPOGRAPHY
+// =================================================================
+// Tipografía moderna para el Modern Bootstrap Extension
+// Configuración de fuentes para modos profesional y casual
+
+// -----------------------------------------------------------------
+// CONFIGURACIÓN DE MODO
+// -----------------------------------------------------------------
+// Cambia entre 'professional' y 'casual' según el tipo de proyecto
+$typography-mode: 'professional' !default;
+
+// -----------------------------------------------------------------
+// FUENTES PROFESIONALES (para SaaS, aplicaciones serias)
+// -----------------------------------------------------------------
+$font-professional-heading: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+$font-professional-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+// -----------------------------------------------------------------
+// FUENTES CASUALES (para sitios desenfadados, deportivos)
+// -----------------------------------------------------------------
+$font-casual-heading: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+$font-casual-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+// -----------------------------------------------------------------
+// APLICACIÓN DE FUENTES SEGÚN MODO
+// -----------------------------------------------------------------
+
+// Títulos (h1, h2, h3, h4, h5, h6)
+@if $typography-mode == 'professional' {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font-professional-heading;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+} @else if $typography-mode == 'casual' {
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    font-family: $font-casual-heading;
+    font-weight: 700;
+    line-height: 1.3;
+  }
+}
+
+// Cuerpo de texto (párrafos, body)
+@if $typography-mode == 'professional' {
+  body, p, .text-body,
+  .form-control, .form-select, .form-check-label,
+  .btn, .nav-link, .dropdown-item {
+    font-family: $font-professional-body;
+    font-weight: 400;
+    line-height: 1.6;
+  }
+} @else if $typography-mode == 'casual' {
+  body, p, .text-body,
+  .form-control, .form-select, .form-check-label,
+  .btn, .nav-link, .dropdown-item {
+    font-family: $font-casual-body;
+    font-weight: 400;
+    line-height: 1.7;
+  }
+}
+
+// -----------------------------------------------------------------
+// CLASES UTILITY OPCIONALES
+// -----------------------------------------------------------------
+// Para casos específicos donde quieras forzar un estilo
+
+.font-professional {
+  font-family: $font-professional-body !important;
+}
+
+.font-casual {
+  font-family: $font-casual-body !important;
+}
+
+.heading-professional {
+  font-family: $font-professional-heading !important;
+  font-weight: 600;
+}
+
+.heading-casual {
+  font-family: $font-casual-heading !important;
+  font-weight: 700;
+}
+
+// -----------------------------------------------------------------
+// OPTIMIZACIONES TIPOGRÁFICAS MODERNAS
+// -----------------------------------------------------------------
+
+// Mejora la legibilidad en pantallas
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  line-height: 1.6;
+}
+
+// Mejora el espaciado de letras en títulos grandes
+h1, .h1 {
+  letter-spacing: -0.025em;
+}
+
+h2, .h2 {
+  letter-spacing: -0.015em;
+}
+
+// Párrafos más legibles
+p {
+  margin-bottom: 1.2rem;
+}
+
+// Links más modernos
+a {
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 2px;
+  }
+}
