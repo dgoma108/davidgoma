@@ -43,8 +43,8 @@ sudo systemctl reload php8.3-fpm
 
 # Verificar que artisan existe antes de ejecutar comandos Laravel
 if [ -f artisan ]; then
-    # echo "🧱 Ejecutando migraciones..."
-    # php artisan migrate --force
+    echo "🧱 Ejecutando migraciones..."
+    php artisan migrate --force
 
     echo "🧹 Limpiando cachés..."
     php artisan cache:clear

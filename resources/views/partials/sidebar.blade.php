@@ -6,8 +6,8 @@
             <div class="nav-section">Introducción</div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('docs.index') ? 'active' : '' }}"
-                        href="{{ route('docs.index') }}">
+                    <a class="nav-link {{ request()->routeIs('docs.overview') ? 'active' : '' }}"
+                        href="{{ route('docs.overview') }}">
                         <span>Overview</span>
                     </a>
                 </li>
@@ -32,25 +32,15 @@
                         <span>Typography</span>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#font-styles">
-                        <span>Estilos de Fuente</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#headings">
-                        <span>Títulos</span>
-                    </a>
-                </li>
             </ul>
 
             <!-- Components -->
             <div class="nav-section">Componentes</div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('docs.components') ? 'active' : '' }}"
-                        href="{{ route('docs.components') }}">
-                        <span>Components</span>
+                    <a class="nav-link {{ request()->routeIs('docs.banners') ? 'active' : '' }}"
+                        href="{{ route('docs.banners') }}">
+                        <span>Banners</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -60,13 +50,15 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#cards">
+                    <a class="nav-link {{ request()->routeIs('docs.cards') ? 'active' : '' }}"
+                        href="{{ route('docs.cards') }}">
                         <span>Cards</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#forms">
-                        <span>Formularios</span>
+                    <a class="nav-link {{ request()->routeIs('docs.forms.overview') ? 'active' : '' }}"
+                        href="{{ route('docs.forms.overview') }}">
+                        <span>Forms</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -75,15 +67,10 @@
                         <span>Navbar</span>
                     </a>
                 </li>
-            </ul>
-
-            <!-- Forms -->
-            <div class="nav-section">Forms</div>
-            <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('docs.forms.overview') ? 'active' : '' }}"
-                        href="{{ route('docs.forms.overview') }}">
-                        <span>Overview</span>
+                    <a class="nav-link {{ request()->routeIs('docs.tables') ? 'active' : '' }}"
+                        href="{{ route('docs.tables') }}">
+                        <span>Tables</span>
                     </a>
                 </li>
             </ul>
@@ -91,7 +78,7 @@
             <!-- Utilities -->
             <div class="nav-section">Utilidades</div>
             <ul class="nav flex-column">
-                <li class="nav-item">
+                {{-- <li class="nav-item">
                     <a class="nav-link {{ request()->routeIs('docs.utilities') ? 'active' : '' }}"
                         href="{{ route('docs.utilities') }}">
                         <span>Utilities</span>
@@ -106,26 +93,17 @@
                     <a class="nav-link" href="#colors">
                         <span>Colores</span>
                     </a>
-                </li>
+                </li> --}}
             </ul>
 
             <!-- Examples -->
             <div class="nav-section">Ejemplos</div>
             <ul class="nav flex-column">
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('docs.examples') ? 'active' : '' }}"
-                        href="{{ route('docs.examples') }}">
-                        <span>Examples</span>
-                    </a>
-                </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#professional-theme">
-                        <span>Tema Profesional</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#casual-theme">
-                        <span>Tema Casual</span>
+                    <a class="nav-link {{ request()->routeIs('docs.cookies-banner') ? 'active' : '' }}"
+                        href="{{ route('docs.cookies-banner') }}" target="_blank">
+                        <span>Cookies Banner</span>
                     </a>
                 </li>
             </ul>

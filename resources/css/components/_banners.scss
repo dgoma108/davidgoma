@@ -1,0 +1,677 @@
+// =========================================
+// BANNERS MODERNOS - DAVID GOMA
+// =========================================
+
+// VARIABLES BASE PARA BANNERS
+// ===========================
+$banner-z-index: 9999;
+$banner-transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+$banner-border-radius: 0.5rem;
+$banner-backdrop: rgba(0, 0, 0, 0.5);
+
+// Variables de colores (si no están definidas)
+$primary: #0d6efd !default;
+$secondary: #6c757d !default;
+$success: #198754 !default;
+$info: #0dcaf0 !default;
+$warning: #ffc107 !default;
+$danger: #dc3545 !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+
+// Variables de font
+$font-family-display: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !default;
+$font-weight-normal: 400 !default;
+$font-weight-semibold: 600 !default;
+$font-weight-bold: 700 !default;
+$font-size-xs: 0.75rem !default;
+$font-size-sm: 0.875rem !default;
+$font-size-base: 1rem !default;
+$font-size-lg: 1.125rem !default;
+$font-size-xl: 1.25rem !default;
+
+// Variables de border radius
+$border-radius: 0.375rem !default;
+$border-radius-lg: 0.5rem !default;
+$border-radius-xl: 0.75rem !default;
+$border-radius-2xl: 1rem !default;
+$border-radius-pill: 50rem !default;
+
+// Variables de box shadow
+$box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06) !default;
+$box-shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05) !default;
+$box-shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04) !default;
+$box-shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25) !default;
+
+// Variables de transition
+$transition-all: all 0.2s ease-in-out !default;
+
+// BANNER BASE
+// ===========
+.banner {
+  position: relative;
+  padding: 1.5rem 2rem;
+  border-radius: $banner-border-radius;
+  box-shadow: $box-shadow-lg;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: $banner-transition;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  overflow: hidden;
+
+  // Efecto de brillo sutil
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(255, 255, 255, 0.1),
+      transparent
+    );
+    transition: left 0.8s;
+  }
+
+  &:hover::before {
+    left: 100%;
+  }
+
+  // Botón de cierre
+  .banner-close {
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: $banner-transition;
+    color: currentColor;
+    cursor: pointer;
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.1);
+    }
+
+    i {
+      font-size: 0.875rem;
+    }
+  }
+
+  // Icono del banner
+  .banner-icon {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.15);
+    font-size: 1.25rem;
+  }
+
+  // Contenido del banner
+  .banner-content {
+    flex: 1;
+
+    .banner-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      margin-bottom: 0.25rem;
+      line-height: 1.2;
+    }
+
+    .banner-text {
+      font-size: $font-size-sm;
+      line-height: 1.4;
+      opacity: 0.9;
+      margin-bottom: 0;
+    }
+  }
+
+  // Acciones del banner
+  .banner-actions {
+    flex-shrink: 0;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+// VARIANTES DE BANNERS
+// ====================
+
+// Banner de información
+.banner-info {
+  background: linear-gradient(135deg, rgba($info, 0.9), rgba($info, 0.7));
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+// Banner de éxito
+.banner-success {
+  background: linear-gradient(135deg, rgba($success, 0.9), rgba($success, 0.7));
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+// Banner de advertencia
+.banner-warning {
+  background: linear-gradient(135deg, rgba($warning, 0.9), rgba($warning, 0.7));
+  color: $gray-900;
+  border-left: 4px solid rgba(255, 255, 255, 0.5);
+}
+
+// Banner de error
+.banner-danger {
+  background: linear-gradient(135deg, rgba($danger, 0.9), rgba($danger, 0.7));
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+// Banner principal
+.banner-primary {
+  background: linear-gradient(135deg, rgba($primary, 0.9), rgba($primary, 0.7));
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.3);
+}
+
+// Banner oscuro
+.banner-dark {
+  background: linear-gradient(135deg, rgba($gray-900, 0.95), rgba($gray-800, 0.9));
+  color: white;
+  border-left: 4px solid rgba(255, 255, 255, 0.2);
+}
+
+// BANNER DE COOKIES (RGPD/LOPD COMPLIANT)
+// =======================================
+.cookie-banner {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(135deg, rgba($gray-900, 0.98), rgba($gray-800, 0.95));
+  color: white;
+  padding: 2rem;
+  z-index: $banner-z-index;
+  transform: translateY(100%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  .cookie-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 2rem;
+    align-items: center;
+
+    @media (max-width: 767.98px) {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .cookie-text {
+    .cookie-title {
+      font-size: $font-size-lg;
+      font-weight: $font-weight-bold;
+      margin-bottom: 0.75rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      &::before {
+        content: '🍪';
+        font-size: 1.5rem;
+      }
+    }
+
+    .cookie-description {
+      font-size: $font-size-sm;
+      line-height: 1.5;
+      opacity: 0.9;
+      margin-bottom: 1rem;
+
+      a {
+        color: $primary;
+        text-decoration: underline;
+
+        &:hover {
+          color: lighten($primary, 10%);
+        }
+      }
+    }
+
+    .cookie-details {
+      font-size: $font-size-xs;
+      opacity: 0.7;
+      margin-bottom: 0;
+    }
+  }
+
+  .cookie-actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    flex-wrap: wrap;
+
+    @media (max-width: 767.98px) {
+      justify-content: center;
+    }
+  }
+}
+
+// Banner de cookies minimalista (top)
+.cookie-banner-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background: rgba($gray-900, 0.95);
+  color: white;
+  padding: 1rem 2rem;
+  z-index: $banner-z-index;
+  transform: translateY(-100%);
+  transition: transform 0.4s ease;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
+  font-size: $font-size-sm;
+
+  &.show {
+    transform: translateY(0);
+  }
+
+  .cookie-actions {
+    display: inline-flex;
+    gap: 1rem;
+    margin-left: 1rem;
+  }
+}
+
+// Banner de cookies flotante (esquina)
+.cookie-banner-float {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  max-width: 400px;
+  background: rgba(255, 255, 255, 0.98);
+  color: $gray-900;
+  padding: 1.5rem;
+  border-radius: $border-radius-xl;
+  box-shadow: $box-shadow-2xl;
+  z-index: $banner-z-index;
+  transform: translateX(120%);
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+
+  &.show {
+    transform: translateX(0);
+  }
+
+  @media (max-width: 767.98px) {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+
+  .cookie-title {
+    font-size: $font-size-base;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    &::before {
+      content: '🍪';
+    }
+  }
+
+  .cookie-text {
+    font-size: $font-size-sm;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .cookie-actions {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-end;
+  }
+}
+
+// BANNERS DE NOTIFICACIÓN
+// ========================
+.notification-banner {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  max-width: 400px;
+  z-index: $banner-z-index + 1;
+  transform: translateX(120%);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+  &.show {
+    transform: translateX(0);
+  }
+
+  &.notification-slide-in {
+    animation: slideInRight 0.4s ease forwards;
+  }
+
+  &.notification-slide-out {
+    animation: slideOutRight 0.4s ease forwards;
+  }
+
+  // Auto-dismiss después de tiempo
+  &.auto-dismiss {
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      height: 3px;
+      background: rgba(255, 255, 255, 0.3);
+      border-radius: 0 0 $border-radius-lg $border-radius-lg;
+      animation: progressBar 5s linear forwards;
+    }
+  }
+}
+
+// BANNER DE PROMOCIÓN/DESCUENTO
+// =============================
+.promo-banner {
+  background: linear-gradient(45deg, $primary, $secondary);
+  color: white;
+  text-align: center;
+  padding: 1rem 2rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.05) 10px,
+      rgba(255, 255, 255, 0.05) 20px
+    );
+    animation: stripes 20s linear infinite;
+  }
+
+  .promo-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  .promo-title {
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    margin-bottom: 0.5rem;
+  }
+
+  .promo-subtitle {
+    font-size: $font-size-base;
+    opacity: 0.9;
+    margin-bottom: 1rem;
+  }
+}
+
+// BANNER DE MANTENIMIENTO
+// =======================
+.maintenance-banner {
+  background: linear-gradient(135deg, rgba($warning, 0.95), rgba(darken($warning, 10%), 0.9));
+  color: $gray-900;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-radius: 0;
+  margin: 0;
+  position: sticky;
+  top: 0;
+  z-index: $banner-z-index - 1;
+
+  .maintenance-icon {
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .maintenance-text {
+    font-weight: $font-weight-semibold;
+  }
+}
+
+// ANIMACIONES
+// ===========
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+}
+
+@keyframes progressBar {
+  from {
+    width: 100%;
+  }
+  to {
+    width: 0%;
+  }
+}
+
+@keyframes stripes {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(50px);
+  }
+}
+
+// TAMAÑOS DE BANNERS
+// ==================
+.banner-sm {
+  padding: 1rem 1.5rem;
+
+  .banner-icon {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .banner-content .banner-title {
+    font-size: $font-size-base;
+  }
+
+  .banner-content .banner-text {
+    font-size: $font-size-xs;
+  }
+}
+
+.banner-lg {
+  padding: 2rem 2.5rem;
+
+  .banner-icon {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  .banner-content .banner-title {
+    font-size: $font-size-xl;
+  }
+
+  .banner-content .banner-text {
+    font-size: $font-size-base;
+  }
+}
+
+// RESPONSIVE
+// ==========
+@media (max-width: 991.98px) {
+  .cookie-banner {
+    .cookie-content {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      text-align: center;
+    }
+  }
+
+  .notification-banner {
+    top: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .banner {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    text-align: center;
+
+    .banner-close {
+      top: 0.5rem;
+      right: 0.5rem;
+    }
+
+    .banner-actions {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  .cookie-banner {
+    padding: 1.5rem 1rem;
+  }
+
+  .cookie-banner-float {
+    .cookie-actions {
+      flex-direction: column;
+      gap: 0.5rem;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  .promo-banner {
+    .promo-title {
+      font-size: $font-size-lg;
+    }
+
+    .promo-subtitle {
+      font-size: $font-size-sm;
+    }
+  }
+}
+
+// UTILIDADES PARA BANNERS
+// =======================
+.banner-fixed-top {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: $banner-z-index;
+  border-radius: 0;
+  margin: 0;
+}
+
+.banner-fixed-bottom {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: $banner-z-index;
+  border-radius: 0;
+  margin: 0;
+}
+
+.banner-sticky {
+  position: sticky;
+  top: 0;
+  z-index: $banner-z-index - 1;
+  margin-bottom: 2rem;
+}
+
+// Estados de banners
+.banner-hidden {
+  display: none;
+}
+
+.banner-dismissible {
+  .banner-close {
+    display: flex;
+  }
+}
+
+// Transiciones suaves para mostrar/ocultar
+.banner-fade-in {
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.banner-fade-out {
+  animation: fadeOut 0.4s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; transform: translateY(0); }
+  to { opacity: 0; transform: translateY(-10px); }
+}

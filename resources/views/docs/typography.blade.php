@@ -3,30 +3,8 @@
 <x-slot:title>Tipografía - Modern Bootstrap Extension</x-slot:title>
 
 <x-slot:styles>
-<!-- Prism.js para syntax highlighting (opcional) -->
-<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
 <style>
 /* Estilos específicos solo para la documentación */
-.code-example {
-    background: #f8f9fa;
-    border-left: 4px solid #007bff;
-    padding: 1rem;
-    margin: 1rem 0;
-}
-
-.variable-list {
-    background: #e9ecef;
-    border-radius: 0.375rem;
-    padding: 1.5rem;
-}
-
-.demo-box {
-    border: 2px dashed #dee2e6;
-    background: #f8f9fa;
-    padding: 2rem;
-    border-radius: 0.5rem;
-    margin: 1rem 0;
-}
 </style>
 <x-slot:styles>
 
@@ -305,9 +283,5 @@ $font-casual-body: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', syst
     </div>
 </div>
 
-@push('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-scss.min.js"></script>
-@endpush
 
 </x-layouts.docs>
